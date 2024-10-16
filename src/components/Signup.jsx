@@ -8,7 +8,8 @@ import toast from 'react-hot-toast';
 
 export default function Signup() {
     const { register, handleSubmit, formState: { errors } } = useForm();
-
+    // const apiUrl = "https://bookstore-2-wrhk.onrender.com/api";
+    const apiUrl = process.env.REACT_APP_API_URL
     const onSubmit = async(data) => {
         const userInfo = {
             fullname: data.fullname,
@@ -16,7 +17,7 @@ export default function Signup() {
             password: data.password
         }
         // console.log(userInfo);
-        await axios.post(`${process.env.REACT_APP_API}signup`,userInfo)
+        await axios.post(`${apiUrl}/signup`,userInfo)
         .then((res)=>{
             console.log(res.data);
             if(res.data.success) {

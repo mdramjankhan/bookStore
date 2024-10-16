@@ -6,11 +6,13 @@ import axios from "axios";
 export default function Course() {
   const [book, setBook] = useState([]);
   const [loading, setLoading] = useState(true);
+  // const apiUrl = "https://bookstore-2-wrhk.onrender.com/api"
+  const apiUrl = process.env.REACT_APP_API_URL
 
   useEffect(() => {
     const getBook = async () => {
       try {
-        const res = await axios.get(`${process.env.REACT_APP_API}book`);
+        const res = await axios.get(`${apiUrl}/book`);
         setBook(res.data.book);
         setLoading(false);
       } catch (e) {

@@ -9,8 +9,9 @@ import axios from "axios";
 
 export default function FreeBook() {
     // const filterData = list.filter((data) => data.category === "Free");
-    const apiUrl = process.env.REACT_APP_API;
-    console.log(apiUrl);
+    // const apiUrl = "https://bookstore-2-wrhk.onrender.com/api"
+    const apiUrl = process.env.REACT_APP_API_URL
+    // console.log(apiUrl);
 
     const [book, setBook] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -18,7 +19,7 @@ export default function FreeBook() {
     useEffect(() => {
         const getBook = async () => {
             try {
-                const res = await axios.get(`${process.env.REACT_APP_API}/book`);
+                const res = await axios.get(`${apiUrl}/book`);
                 setBook(res.data.book.filter((data) => data.category === "Free"));
                 setLoading(false);
             } catch (e) {
