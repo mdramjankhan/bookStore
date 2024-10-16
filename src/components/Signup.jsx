@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import toast from 'react-hot-toast';
 
+
 export default function Signup() {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -15,7 +16,7 @@ export default function Signup() {
             password: data.password
         }
         // console.log(userInfo);
-        await axios.post("http://localhost:4000/api/signup",userInfo)
+        await axios.post(`${process.env.REACT_APP_API}signup`,userInfo)
         .then((res)=>{
             console.log(res.data);
             if(res.data.success) {

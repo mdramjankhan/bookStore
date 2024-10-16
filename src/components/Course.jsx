@@ -10,7 +10,7 @@ export default function Course() {
   useEffect(() => {
     const getBook = async () => {
       try {
-        const res = await axios.get('http://localhost:4000/api/book');
+        const res = await axios.get(`${process.env.REACT_APP_API}book`);
         setBook(res.data.book);
         setLoading(false);
       } catch (e) {

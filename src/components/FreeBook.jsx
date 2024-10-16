@@ -9,6 +9,8 @@ import axios from "axios";
 
 export default function FreeBook() {
     // const filterData = list.filter((data) => data.category === "Free");
+    const apiUrl = process.env.REACT_APP_API;
+    console.log(apiUrl);
 
     const [book, setBook] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -16,7 +18,7 @@ export default function FreeBook() {
     useEffect(() => {
         const getBook = async () => {
             try {
-                const res = await axios.get('http://localhost:4000/api/book');
+                const res = await axios.get(`${process.env.REACT_APP_API}/book`);
                 setBook(res.data.book.filter((data) => data.category === "Free"));
                 setLoading(false);
             } catch (e) {
